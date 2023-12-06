@@ -1,0 +1,9 @@
+{% for task in tasks %}
+<li >
+    <input type="checkbox" hx-delete="{% url 'change_task_status' task.pk %}"
+    hx-target="#tasks-list"
+    hx-confirm="Are you sure you wish to update?" checked="{{ task.completed }}">
+    <span id="task-{{ task.pk }}">{{ task.name }}</span>
+</li>
+
+{% endfor %}
