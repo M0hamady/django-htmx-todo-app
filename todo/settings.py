@@ -10,12 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import pymysql
 
+# pymysql.version_info = (1,4,6,'final',0)
+pymysql.install_as_MySQLdb()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -38,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'htmx',
-    'tasks'
+    'tasks',
+    # "django_mysql",
 ]
 
 MIDDLEWARE = [
@@ -74,18 +79,22 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'verceldb',
-        'USER': 'default',
-        'PASSWORD': 'y8YvdCH9BwnV',
-        'HOST': 'ep-lingering-cloud-93038963.us-east-1.postgres.vercel-storage.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'ssl': {
+                'sslmode': 'REQUIRED',
+            },
+        },
+        'NAME': 'defaultdb',
+        'USER': 'avnadmin',
+        'PASSWORD': 'AVNS_UVk1zrbRDFYauTKtiDv',
+        'HOST': 'mysql-3ce043aa-urfitness96-a28f.a.aivencloud.com',
+        'PORT': '17998',
     }
 }
-
+# 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 

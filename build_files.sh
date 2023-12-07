@@ -7,6 +7,6 @@ yum install sqlite-devel -y
 make && make altinstall
 cd /vercel/path0/
 python3.9 -m pip install --upgrade pip
+pip install psycopg2-binary
 pip install -r requirements.txt
-pip install psycopg2
 python3.9 manage.py collectstatic --noinput
