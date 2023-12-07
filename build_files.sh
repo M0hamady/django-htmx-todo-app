@@ -1,5 +1,5 @@
 # build_files.sh
-which python3.10
+which python3.9
 pwd
 cd /usr/local/bin/
 yum install sqlite-devel -y
